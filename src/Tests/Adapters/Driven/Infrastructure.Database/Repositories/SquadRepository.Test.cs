@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Adapters.Driven.Infrastructure.Database.Context;
 using Adapters.Driven.Infrastructure.Database.Repositories;
+using Core.Domain.Adapters;
 using Core.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Moq;
@@ -40,6 +41,30 @@ namespace Tests.Adapters.Driven.Infrastructure.Database.Repositories
 
             // Assert
             Assert.NotNull(squads);
+        }
+
+        [Theory]
+        [InlineData(21)]
+        public void Should_Return_Success_On_GetSquadByIdRepository(int id)
+        {
+            // Arrange
+            var data = new Squad
+            {
+                Id = 1,
+                Name = "ajksdfqweprij",
+                Corp = Corp.Navy,
+                CreatedAt = DateTime.Now,
+                UpdatedAt = DateTime.Now,
+                DeletedAt = null
+            };
+
+            // Act
+            var squadRepository = new Mock<ISquadRepository>();
+            squadRepository.Setup(s => s.GetSquadById(id)).Returns(data);
+            var squad = squadRepository.Object.GetSquadById(id);
+
+            // Assert
+            Assert.NotNull(squad);
         }
     }
 }
