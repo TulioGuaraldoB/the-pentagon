@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Adapters\Driven\Infrastructure.Database\Infrastructure.Database.csproj" />
+    <ProjectReference Include="..\Adapters\Driven\Infrastructure\Database\Database.csproj" />
     <ProjectReference Include="..\Adapters\Driving\Api\Api.csproj" />
   </ItemGroup>
 

@@ -40,7 +40,6 @@ namespace Adapters.Driven.Infrastructure.Database.Repositories
             }
             catch (Exception ex)
             {
-
                 throw new Exception($"record not found. {(ex ?? ex.InnerException).Message}");
             }
         }
